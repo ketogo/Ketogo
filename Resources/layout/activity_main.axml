@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+	<TextView
+		android:text="Ketogo"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textSize="35dp"
+		android:layout_marginTop="25dp"
+		android:textStyle="italic"
+		android:layout_centerHorizontal="true"
+		android:id="@+id/textView" />
+
+	<ImageView
+		android:layout_width="200dp"
+		android:layout_height="300dp"
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:src="@drawable/Icon"
+		android:layout_below="@+id/textView"
+		android:layout_centerHorizontal="true"
+		android:id="@+id/imageView" />
+
+	<Button
+        android:id="@+id/MapButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_below="@+id/imageView"
+		android:layout_centerHorizontal="true"
+        android:text="Map" />
+    <Button
+        android:id="@+id/TopButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+		android:layout_below="@+id/imageView"
+		android:layout_toRightOf="@+id/MapButton"
+        android:text="Top list" />
+    <Button
+        android:id="@+id/FavoriteButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+		android:layout_below="@+id/imageView"
+		android:layout_toLeftOf="@+id/MapButton"
+        android:text="My Favorite" />
+	<Button
+        android:id="@+id/OptionsButton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+		android:layout_below="@+id/MapButton"
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="25dp"
+        android:text="Options" />
+    <Button
+        android:id="@+id/AboutButton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+	    android:layout_below="@+id/OptionsButton"
+		android:layout_centerHorizontal="true"
+        android:text="About us" />
+
+</RelativeLayout>

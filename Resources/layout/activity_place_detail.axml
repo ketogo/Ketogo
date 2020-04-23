@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	<TextView
+		android:text="Názov"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:textSize="25dp"
+		android:paddingTop="20dp"
+		android:gravity="center"
+		android:id="@+id/placeNameTextView" />
+	<LinearLayout
+		android:orientation="horizontal"
+		android:paddingTop="15dp"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:id="@+id/linearLayout5">
+		<Button
+			android:text="Naviguj"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:id="@+id/navButton" />
+		<ImageButton
+			android:src="@android:drawable/ic_menu_gallery"
+			android:layout_width="25dp"
+			android:layout_height="25dp"
+			android:layout_marginHorizontal="20dp"
+			android:gravity="center"
+			android:id="@+id/favButton" />
+		<Button
+			android:text="Mapa"
+			android:layout_width="wrap_content"
+			android:gravity="center"
+			android:layout_height="wrap_content"
+			android:id="@+id/mapButton" />
+	</LinearLayout>
+	<ImageView
+		android:src="@android:drawable/ic_menu_gallery"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:maxHeight="400dp"
+		android:paddingTop="20dp"
+		android:id="@+id/placeImageView" />
+	<LinearLayout
+		android:orientation="vertical"
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/linearLayout1">
+		<LinearLayout
+			android:orientation="horizontal"
+			android:minWidth="25px"
+			android:minHeight="25px"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/linearLayout2">
+			<ImageView
+				android:src="@android:drawable/ic_menu_gallery"
+				android:layout_width="25dp"
+				android:layout_height="25dp"
+				android:id="@+id/imageView2" />
+			<TextView
+				android:text="Adresa"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:id="@+id/addressTextView" />
+		</LinearLayout>
+		<LinearLayout
+			android:orientation="horizontal"
+			android:minWidth="25px"
+			android:minHeight="25px"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/linearLayout3">
+			<ImageView
+				android:src="@android:drawable/ic_menu_gallery"
+				android:layout_width="25dp"
+				android:layout_height="25dp"
+				android:id="@+id/imageView3" />
+			<TextView
+				android:text="Web"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:id="@+id/websiteTextView" />
+		</LinearLayout>
+		<LinearLayout
+			android:orientation="horizontal"
+			android:minWidth="25px"
+			android:minHeight="25px"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/linearLayout4">
+			<ImageView
+				android:src="@android:drawable/ic_menu_gallery"
+				android:layout_width="25dp"
+				android:layout_height="25dp"
+				android:id="@+id/imageView4" />
+			<TextView
+				android:text="09404140248"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:id="@+id/numberTextView" />
+		</LinearLayout>
+	</LinearLayout>
+
+</LinearLayout>
