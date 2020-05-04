@@ -41,5 +41,15 @@ namespace Ketogo.Database
             return allPlaces.FirstOrDefault(p => p.PlaceId == id);
         }
 
+        public List<Place> GetTop20PlacesByCategory(string category)
+        {
+            return dbConnection.Query<Place>("Select * from [places] where category = '" + category + "' and photo is not '' order by rating desc limit 20");
+        }
+
+        public List<Place> GetTop20Places()
+        {
+            return dbConnection.Query<Place>("Select * from [places] where photo is not '' order by rating desc limit 20");
+        }
+
     }
 }

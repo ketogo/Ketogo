@@ -20,8 +20,6 @@ namespace Ketogo
     [Activity(Label = "PlaceDetailActivity")]
     public class PlaceDetailActivity : Activity
     {
-        private const string ApiKey = "AIzaSyC5YkTTWApCrWcfaMgpy33t_uIGTViD4C0";
-
         private DatabaseManager _placeDatabase;
         private Place _selectedPlace;
 
@@ -71,23 +69,21 @@ namespace Ketogo
             throw new NotImplementedException();
         }
 
-        private async void BindData()
+        private void BindData()
         {
             _placeNameTextView.Text = _selectedPlace.Name;
             _addressTextView.Text = _selectedPlace.Address;
             _websiteTextView.Text = _selectedPlace.Website;
             _numberTextView.Text = _selectedPlace.PhoneNumber;
 
-            if (_selectedPlace.PhotoReference.Length <= 1)
+            if (_selectedPlace.Photo.Length <= 1)
             {
                 int resourceId = (int)typeof(Resource.Drawable).GetField("no_image").GetValue(null);
                 _placeImageView.SetImageResource(resourceId);
             }
             else
             {
-                string apiUrl = $"https://maps.googleapis.com/maps/api/place/photo?maxwidth=600&photoreference={_selectedPlace.PhotoReference}&key={ApiKey}";
-                string imageUrl = await GetRedirectedUrl(apiUrl);
-                var imageBitmap = ImageHelper.GetImageBitmapFromUrl(imageUrl);
+                var imageBitmap = ImageHelper.GetImageBitmapFromUrl(_selectedPlace.Photo);
                 _placeImageView.SetImageBitmap(imageBitmap);
             }
         }

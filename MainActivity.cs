@@ -52,12 +52,14 @@ namespace Ketogo
 
         private void TopButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var TopIntent = new Intent(this, typeof(PlaceMenuWithTabsActivity));
+            StartActivity(TopIntent);
         }
 
         private void FavoriteButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var FavIntent = new Intent(this, typeof(PlaceMenuActivity));
+            StartActivity(FavIntent);
         }
 
         private void FindViews()

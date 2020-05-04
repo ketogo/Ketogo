@@ -2347,26 +2347,26 @@ namespace Ketogo
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
-			// aapt resource value: 0x7f020081
-			public const int avd_hide_password_1 = 2130837633;
-			
-			// aapt resource value: 0x7f020082
-			public const int avd_hide_password_2 = 2130837634;
-			
 			// aapt resource value: 0x7f020083
-			public const int avd_hide_password_3 = 2130837635;
+			public const int avd_hide_password_1 = 2130837635;
+			
+			// aapt resource value: 0x7f020084
+			public const int avd_hide_password_2 = 2130837636;
+			
+			// aapt resource value: 0x7f020085
+			public const int avd_hide_password_3 = 2130837637;
 			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
 			
-			// aapt resource value: 0x7f020084
-			public const int avd_show_password_1 = 2130837636;
-			
-			// aapt resource value: 0x7f020085
-			public const int avd_show_password_2 = 2130837637;
-			
 			// aapt resource value: 0x7f020086
-			public const int avd_show_password_3 = 2130837638;
+			public const int avd_show_password_1 = 2130837638;
+			
+			// aapt resource value: 0x7f020087
+			public const int avd_show_password_2 = 2130837639;
+			
+			// aapt resource value: 0x7f020088
+			public const int avd_show_password_3 = 2130837640;
 			
 			// aapt resource value: 0x7f020055
 			public const int common_full_open_on_phone = 2130837589;
@@ -2453,52 +2453,58 @@ namespace Ketogo
 			public const int icon = 2130837616;
 			
 			// aapt resource value: 0x7f020071
-			public const int navigation_empty_icon = 2130837617;
+			public const int icon_fav = 2130837617;
 			
 			// aapt resource value: 0x7f020072
-			public const int no_image = 2130837618;
+			public const int icon_star = 2130837618;
 			
 			// aapt resource value: 0x7f020073
-			public const int notification_action_background = 2130837619;
+			public const int navigation_empty_icon = 2130837619;
 			
 			// aapt resource value: 0x7f020074
-			public const int notification_bg = 2130837620;
+			public const int no_image = 2130837620;
 			
 			// aapt resource value: 0x7f020075
-			public const int notification_bg_low = 2130837621;
+			public const int notification_action_background = 2130837621;
 			
 			// aapt resource value: 0x7f020076
-			public const int notification_bg_low_normal = 2130837622;
+			public const int notification_bg = 2130837622;
 			
 			// aapt resource value: 0x7f020077
-			public const int notification_bg_low_pressed = 2130837623;
+			public const int notification_bg_low = 2130837623;
 			
 			// aapt resource value: 0x7f020078
-			public const int notification_bg_normal = 2130837624;
+			public const int notification_bg_low_normal = 2130837624;
 			
 			// aapt resource value: 0x7f020079
-			public const int notification_bg_normal_pressed = 2130837625;
+			public const int notification_bg_low_pressed = 2130837625;
 			
 			// aapt resource value: 0x7f02007a
-			public const int notification_icon_background = 2130837626;
-			
-			// aapt resource value: 0x7f02007f
-			public const int notification_template_icon_bg = 2130837631;
-			
-			// aapt resource value: 0x7f020080
-			public const int notification_template_icon_low_bg = 2130837632;
+			public const int notification_bg_normal = 2130837626;
 			
 			// aapt resource value: 0x7f02007b
-			public const int notification_tile_bg = 2130837627;
+			public const int notification_bg_normal_pressed = 2130837627;
 			
 			// aapt resource value: 0x7f02007c
-			public const int notify_panel_notification_icon_bg = 2130837628;
+			public const int notification_icon_background = 2130837628;
+			
+			// aapt resource value: 0x7f020081
+			public const int notification_template_icon_bg = 2130837633;
+			
+			// aapt resource value: 0x7f020082
+			public const int notification_template_icon_low_bg = 2130837634;
 			
 			// aapt resource value: 0x7f02007d
-			public const int tooltip_frame_dark = 2130837629;
+			public const int notification_tile_bg = 2130837629;
 			
 			// aapt resource value: 0x7f02007e
-			public const int tooltip_frame_light = 2130837630;
+			public const int notify_panel_notification_icon_bg = 2130837630;
+			
+			// aapt resource value: 0x7f02007f
+			public const int tooltip_frame_dark = 2130837631;
+			
+			// aapt resource value: 0x7f020080
+			public const int tooltip_frame_light = 2130837632;
 			
 			static Drawable()
 			{
@@ -2647,6 +2653,9 @@ namespace Ketogo
 			
 			// aapt resource value: 0x7f0b00bf
 			public const int cancel_action = 2131427519;
+			
+			// aapt resource value: 0x7f0b00cf
+			public const int categoryTextView = 2131427535;
 			
 			// aapt resource value: 0x7f0b004f
 			public const int center = 2131427407;
@@ -2846,14 +2855,14 @@ namespace Ketogo
 			// aapt resource value: 0x7f0b00a1
 			public const int mapButton = 2131427489;
 			
-			// aapt resource value: 0x7f0b00d0
-			public const int masked = 2131427536;
+			// aapt resource value: 0x7f0b00d5
+			public const int masked = 2131427541;
 			
 			// aapt resource value: 0x7f0b00c1
 			public const int media_actions = 2131427521;
 			
-			// aapt resource value: 0x7f0b00ce
-			public const int message = 2131427534;
+			// aapt resource value: 0x7f0b00d3
+			public const int message = 2131427539;
 			
 			// aapt resource value: 0x7f0b003c
 			public const int middle = 2131427388;
@@ -2906,8 +2915,17 @@ namespace Ketogo
 			// aapt resource value: 0x7f0b00a2
 			public const int placeImageView = 2131427490;
 			
+			// aapt resource value: 0x7f0b00ce
+			public const int placeMenuRecyclerView = 2131427534;
+			
 			// aapt resource value: 0x7f0b009d
 			public const int placeNameTextView = 2131427485;
+			
+			// aapt resource value: 0x7f0b00d0
+			public const int placePager = 2131427536;
+			
+			// aapt resource value: 0x7f0b00d1
+			public const int placeRatingTextView = 2131427537;
 			
 			// aapt resource value: 0x7f0b0006
 			public const int progress_circular = 2131427334;
@@ -2917,6 +2935,9 @@ namespace Ketogo
 			
 			// aapt resource value: 0x7f0b007f
 			public const int radio = 2131427455;
+			
+			// aapt resource value: 0x7f0b00d2
+			public const int ratingImageView = 2131427538;
 			
 			// aapt resource value: 0x7f0b0054
 			public const int right = 2131427412;
@@ -3125,8 +3146,8 @@ namespace Ketogo
 			// aapt resource value: 0x7f0b0016
 			public const int view_offset_helper = 2131427350;
 			
-			// aapt resource value: 0x7f0b00cf
-			public const int visible = 2131427535;
+			// aapt resource value: 0x7f0b00d4
+			public const int visible = 2131427540;
 			
 			// aapt resource value: 0x7f0b00a9
 			public const int websiteTextView = 2131427497;
@@ -3374,19 +3395,31 @@ namespace Ketogo
 			public const int notification_template_part_time = 2130968633;
 			
 			// aapt resource value: 0x7f04003a
-			public const int select_dialog_item_material = 2130968634;
+			public const int place_menu = 2130968634;
 			
 			// aapt resource value: 0x7f04003b
-			public const int select_dialog_multichoice_material = 2130968635;
+			public const int place_menu_fragment = 2130968635;
 			
 			// aapt resource value: 0x7f04003c
-			public const int select_dialog_singlechoice_material = 2130968636;
+			public const int place_menu_tabs = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int support_simple_spinner_dropdown_item = 2130968637;
+			public const int place_viewholder = 2130968637;
 			
 			// aapt resource value: 0x7f04003e
-			public const int tooltip = 2130968638;
+			public const int select_dialog_item_material = 2130968638;
+			
+			// aapt resource value: 0x7f04003f
+			public const int select_dialog_multichoice_material = 2130968639;
+			
+			// aapt resource value: 0x7f040040
+			public const int select_dialog_singlechoice_material = 2130968640;
+			
+			// aapt resource value: 0x7f040041
+			public const int support_simple_spinner_dropdown_item = 2130968641;
+			
+			// aapt resource value: 0x7f040042
+			public const int tooltip = 2130968642;
 			
 			static Layout()
 			{
