@@ -61,12 +61,27 @@ namespace Ketogo
 
         private void FavButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            int selectedPlaceId = _selectedPlace.PlaceId;
+            _placeDatabase = new DatabaseManager();
+            Place selectedPlace = _placeDatabase.GetPlaceById(selectedPlaceId);
+            if (selectedPlace.IsFavorite == 0)
+            {
+                _placeDatabase.AddToFavorites(selectedPlaceId);
+            }
+            else
+            {
+                _placeDatabase.RemoveFromFavorites(selectedPlaceId);
+            }
+
         }
 
         private void MapButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            int selectedPlaceId = _selectedPlace.PlaceId;
+
+            Intent mapIntent = new Intent(Application.Context, typeof(MapActivity));
+            mapIntent.PutExtra("selectedPlaceId", selectedPlaceId);
+            StartActivity(mapIntent);
         }
 
         private void BindData()
@@ -98,34 +113,6 @@ namespace Ketogo
             _mapButton = FindViewById<Button>(Resource.Id.mapButton);
             _navButton = FindViewById<Button>(Resource.Id.navButton);
             _favButton = FindViewById<ImageButton>(Resource.Id.favButton);
-        }
-
-
-        public static async Task<string> GetRedirectedUrl(string url)
-        {
-            //this allows you to set the settings so that we can get the redirect url
-            var handler = new HttpClientHandler()
-            {
-                AllowAutoRedirect = false
-            };
-            string redirectedUrl = null;
-
-            using (HttpClient client = new HttpClient(handler))
-            using (HttpResponseMessage response = await client.GetAsync(url))
-            using (HttpContent content = response.Content)
-            {
-                // ... Read the response to see if we have the redirected url
-                if (response.StatusCode == System.Net.HttpStatusCode.Found)
-                {
-                    HttpResponseHeaders headers = response.Headers;
-                    if (headers != null && headers.Location != null)
-                    {
-                        redirectedUrl = headers.Location.AbsoluteUri;
-                    }
-                }
-            }
-
-            return redirectedUrl;
         }
     }
 }

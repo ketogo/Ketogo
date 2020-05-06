@@ -43,13 +43,14 @@
 		android:src="@android:drawable/ic_menu_gallery"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:maxHeight="400dp"
-		android:paddingTop="20dp"
+		android:maxHeight="500dp"
+		android:paddingTop="30dp"
 		android:id="@+id/placeImageView" />
 	<LinearLayout
 		android:orientation="vertical"
 		android:minWidth="25px"
 		android:minHeight="25px"
+		android:padding="15dp"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:id="@+id/linearLayout1">
@@ -57,6 +58,7 @@
 			android:orientation="horizontal"
 			android:minWidth="25px"
 			android:minHeight="25px"
+			android:layout_marginTop="10dp"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:id="@+id/linearLayout2">
@@ -69,12 +71,14 @@
 				android:text="Adresa"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:singleLine="false"
 				android:id="@+id/addressTextView" />
 		</LinearLayout>
 		<LinearLayout
 			android:orientation="horizontal"
 			android:minWidth="25px"
 			android:minHeight="25px"
+			android:layout_marginTop="10dp"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:id="@+id/linearLayout3">
@@ -87,12 +91,14 @@
 				android:text="Web"
 				android:layout_width="wrap_content"
 				android:layout_height="match_parent"
+				android:singleLine="false"
 				android:id="@+id/websiteTextView" />
 		</LinearLayout>
 		<LinearLayout
 			android:orientation="horizontal"
 			android:minWidth="25px"
 			android:minHeight="25px"
+			android:layout_marginTop="10dp"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:id="@+id/linearLayout4">

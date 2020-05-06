@@ -30,21 +30,21 @@
         android:layout_height="wrap_content"
 		android:layout_below="@+id/imageView"
 		android:layout_centerHorizontal="true"
-        android:text="Map" />
+        android:text="Mapa" />
     <Button
         android:id="@+id/TopButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
 		android:layout_below="@+id/imageView"
 		android:layout_toRightOf="@+id/MapButton"
-        android:text="Top list" />
+        android:text="TOP" />
     <Button
         android:id="@+id/FavoriteButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
 		android:layout_below="@+id/imageView"
 		android:layout_toLeftOf="@+id/MapButton"
-        android:text="My Favorite" />
+        android:text="Obľúbené" />
 	<Button
         android:id="@+id/OptionsButton"
         android:layout_width="250dp"
@@ -52,13 +52,13 @@
 		android:layout_below="@+id/MapButton"
 		android:layout_centerHorizontal="true"
 		android:layout_marginTop="25dp"
-        android:text="Options" />
+        android:text="V okolí" />
     <Button
         android:id="@+id/AboutButton"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
 	    android:layout_below="@+id/OptionsButton"
 		android:layout_centerHorizontal="true"
-        android:text="About us" />
+        android:text="O aplikácií" />
 
 </RelativeLayout>

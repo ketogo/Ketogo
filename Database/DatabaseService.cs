@@ -23,7 +23,7 @@ namespace Ketogo.Database
 
         public SQLiteConnection CreateConnection()
         {
-            var sqliteFilename = "myPlaces.db3";
+            var sqliteFilename = "places.db3";
             string documentsDirectoryPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             var path = Path.Combine(documentsDirectoryPath, sqliteFilename);
 

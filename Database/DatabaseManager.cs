@@ -29,16 +29,21 @@ namespace Ketogo.Database
             return dbConnection.Query<Place>("Select * From [places]");
         }
 
-        public List<Place> GetAllRestaurants()
-        {
-            List<Place> allPlaces = GetAllPlaces();
-            return allPlaces.Where(p => p.Category == "Restaurant").ToList();
-        }
-
         public Place GetPlaceById(int id)
         {
             List<Place> allPlaces = GetAllPlaces();
             return allPlaces.FirstOrDefault(p => p.PlaceId == id);
+        }
+
+        public Place GetPlaceByName(string name)
+        {
+            List<Place> allPlaces = GetAllPlaces();
+            return allPlaces.FirstOrDefault(p => p.Name == name);
+        }
+
+        public List<Place> GetAllPlacesByCategory(string category)
+        {
+            return dbConnection.Query<Place>("Select * from [places] where category = '" + category + "'");
         }
 
         public List<Place> GetTop20PlacesByCategory(string category)
@@ -46,9 +51,19 @@ namespace Ketogo.Database
             return dbConnection.Query<Place>("Select * from [places] where category = '" + category + "' and photo is not '' order by rating desc limit 20");
         }
 
-        public List<Place> GetTop20Places()
+        public List<Place> GetFavoritePlaces()
         {
-            return dbConnection.Query<Place>("Select * from [places] where photo is not '' order by rating desc limit 20");
+            return dbConnection.Query<Place>("Select * from [places] where isfavorite = 1");
+        }
+
+        public void AddToFavorites(int id)
+        {
+            dbConnection.Query<Place>("Update [places] Set isfavorite = 1 where placeid = " + id);
+        }
+
+        public void RemoveFromFavorites(int id)
+        {
+            dbConnection.Query<Place>("Update [places] Set isfavorite = 0 where placeid = " + id);
         }
 
     }

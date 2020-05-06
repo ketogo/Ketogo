@@ -14,8 +14,8 @@ using Ketogo.Adapters;
 
 namespace Ketogo
 {
-    [Activity(Label = "PlaceMenuActivity")]
-    public class PlaceMenuActivity : Activity
+    [Activity(Label = "FavoriteActivity")]
+    public class FavoriteActivity : Activity
     {
         private RecyclerView _placeRecyclerView;
         private RecyclerView.LayoutManager _placeLayoutManager;

@@ -1,4 +1,26 @@
 <resources>
     <string name="app_name">Ketogo</string>
     <string name="action_settings">Settings</string>
+
+  <string-array name="dropdown_array">
+    <item>Filter</item>
+    <item>Reštaurácie</item>
+    <item>Kaviarne</item>
+    <item>Bankomaty</item>
+    <item>Banky</item>
+    <item>Autoumyvárne</item>
+    <item>Knižnice</item>
+    <item>Nočné kluby</item>
+    <item>Políciaa</item>
+    <item>Obchody</item>
+    <item>Školy</item>
+    <item>Pošta</item>
+    <item>Posilovne</item>
+    <item>Nemocnice</item>
+    <item>Parky</item>
+    <item>Kostoly</item>
+    <item>Pumpy</item>
+    <item>Doktori</item>
+  </string-array>
+
 </resources>

@@ -32,7 +32,7 @@ namespace Ketogo.Adapters
         public PlaceAdapter()
         {
             _placeDatabase = new DatabaseManager();
-            _places = _placeDatabase.GetTop20Places();
+            _places = _placeDatabase.GetFavoritePlaces();
         }
 
         public override int ItemCount => _places.Count;

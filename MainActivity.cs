@@ -58,7 +58,7 @@ namespace Ketogo
 
         private void FavoriteButton_Click(object sender, EventArgs e)
         {
-            var FavIntent = new Intent(this, typeof(PlaceMenuActivity));
+            var FavIntent = new Intent(this, typeof(FavoriteActivity));
             StartActivity(FavIntent);
         }
 
