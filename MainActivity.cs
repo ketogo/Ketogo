@@ -74,6 +74,7 @@ namespace Ketogo
         void MapButton_Click(object sender, EventArgs e)
         {
             var MapIntent = new Intent(this, typeof(MapActivity));
+            MapIntent.PutExtra("selectedPlaceId", 0);
             StartActivity(MapIntent);
         }
     }

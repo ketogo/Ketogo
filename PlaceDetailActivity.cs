@@ -67,10 +67,12 @@ namespace Ketogo
             if (selectedPlace.IsFavorite == 0)
             {
                 _placeDatabase.AddToFavorites(selectedPlaceId);
+                _favButton.SetImageResource((int)typeof(Resource.Drawable).GetField("icon_favorite").GetValue(null));
             }
             else
             {
                 _placeDatabase.RemoveFromFavorites(selectedPlaceId);
+                _favButton.SetImageResource((int)typeof(Resource.Drawable).GetField("icon_notfavorite").GetValue(null));
             }
 
         }
@@ -100,6 +102,15 @@ namespace Ketogo
             {
                 var imageBitmap = ImageHelper.GetImageBitmapFromUrl(_selectedPlace.Photo);
                 _placeImageView.SetImageBitmap(imageBitmap);
+            }
+
+            if (_selectedPlace.IsFavorite == 0)
+            {
+                _favButton.SetImageResource((int)typeof(Resource.Drawable).GetField("icon_notfavorite").GetValue(null));
+            }
+            else
+            {
+                _favButton.SetImageResource((int)typeof(Resource.Drawable).GetField("icon_favorite").GetValue(null));
             }
         }
 

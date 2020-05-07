@@ -26,11 +26,12 @@
 			android:gravity="center"
 			android:id="@+id/navButton" />
 		<ImageButton
-			android:src="@android:drawable/ic_menu_gallery"
+			android:src="@drawable/icon_notfavorite"
 			android:layout_width="25dp"
 			android:layout_height="25dp"
 			android:layout_marginHorizontal="20dp"
 			android:gravity="center"
+			android:background="@android:color/transparent"
 			android:id="@+id/favButton" />
 		<Button
 			android:text="Mapa"
@@ -63,7 +64,7 @@
 			android:layout_height="wrap_content"
 			android:id="@+id/linearLayout2">
 			<ImageView
-				android:src="@android:drawable/ic_menu_gallery"
+				android:src="@drawable/icon_address"
 				android:layout_width="25dp"
 				android:layout_height="25dp"
 				android:id="@+id/imageView2" />
@@ -72,6 +73,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:singleLine="false"
+				android:layout_marginLeft="15dp"
 				android:id="@+id/addressTextView" />
 		</LinearLayout>
 		<LinearLayout
@@ -83,7 +85,7 @@
 			android:layout_height="wrap_content"
 			android:id="@+id/linearLayout3">
 			<ImageView
-				android:src="@android:drawable/ic_menu_gallery"
+				android:src="@drawable/icon_website"
 				android:layout_width="25dp"
 				android:layout_height="25dp"
 				android:id="@+id/imageView3" />
@@ -91,6 +93,7 @@
 				android:text="Web"
 				android:layout_width="wrap_content"
 				android:layout_height="match_parent"
+				android:layout_marginLeft="15dp"
 				android:singleLine="false"
 				android:id="@+id/websiteTextView" />
 		</LinearLayout>
@@ -103,7 +106,7 @@
 			android:layout_height="wrap_content"
 			android:id="@+id/linearLayout4">
 			<ImageView
-				android:src="@android:drawable/ic_menu_gallery"
+				android:src="@drawable/icon_phone"
 				android:layout_width="25dp"
 				android:layout_height="25dp"
 				android:id="@+id/imageView4" />
@@ -111,6 +114,7 @@
 				android:text="09404140248"
 				android:layout_width="wrap_content"
 				android:layout_height="match_parent"
+				android:layout_marginLeft="15dp"
 				android:id="@+id/numberTextView" />
 		</LinearLayout>
 	</LinearLayout>

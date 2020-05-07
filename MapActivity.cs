@@ -7,6 +7,7 @@ using Android.App;
 using Android.Content;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
+using Android.Locations;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.V7.App;
@@ -18,12 +19,21 @@ using Ketogo.Model;
 namespace Ketogo
 {
     [Activity(Label = "MapActivity")]
-    public class MapActivity : AppCompatActivity, IOnMapReadyCallback
+    public class MapActivity : AppCompatActivity, IOnMapReadyCallback, ILocationListener
     {
         private GoogleMap _googleMap;
         private DatabaseManager _placeDatabase;
+        private LatLng _userLatLng;
         private LatLng _selectedPlaceLatLng;
         private string _selectedPlaceCategory;
+        private LocationManager _locationManager;
+        private string _provider;
+        private int selectedPlaceId;
+
+        private Marker _userMarker;
+
+        private double _userLat;
+        private double _userLng;
 
         private List<Place> _selectedPlaces = new List<Place>();
 
@@ -34,6 +44,12 @@ namespace Ketogo
 
             var mapFragment = (MapFragment)FragmentManager.FindFragmentById(Resource.Id.map);
             mapFragment.GetMapAsync(this);
+
+            var userLocationButton = FindViewById<ImageButton>(Resource.Id.userLocationButton);
+            userLocationButton.Click += UserLocationButton_Click;
+
+            var menuButton = FindViewById<Button>(Resource.Id.menuButton);
+            menuButton.Click += MenuButton_Click;
 
             var spinner = FindViewById<Spinner>(Resource.Id.spinner);
             string firstItem = spinner.SelectedItem.ToString();
@@ -114,12 +130,43 @@ namespace Ketogo
 
             };
 
+            _locationManager = (LocationManager)GetSystemService(Context.LocationService);
+            _provider = _locationManager.GetBestProvider(new Criteria(), false);
+            Location myLocation = _locationManager.GetLastKnownLocation(_provider);
+            if (myLocation == null)
+            {
+                System.Diagnostics.Debug.WriteLine("No Location");
+            }
+
             _placeDatabase = new DatabaseManager();
 
-            int selectedPlaceId = Intent.Extras.GetInt("selectedPlaceId");
-            Place selectedPlace = _placeDatabase.GetPlaceById(selectedPlaceId);
-            _selectedPlaceLatLng = new LatLng(selectedPlace.Lat,selectedPlace.Lng);
-            _selectedPlaceCategory = selectedPlace.Category;
+            selectedPlaceId = Intent.Extras.GetInt("selectedPlaceId");
+            if (selectedPlaceId == 0)
+            {
+                _selectedPlaceLatLng = new LatLng(myLocation.Latitude, myLocation.Longitude);
+                _userLatLng = new LatLng(myLocation.Latitude, myLocation.Longitude);
+            }
+            else
+            {
+                Place selectedPlace = _placeDatabase.GetPlaceById(selectedPlaceId);
+                _selectedPlaceLatLng = new LatLng(selectedPlace.Lat, selectedPlace.Lng);
+                _selectedPlaceCategory = selectedPlace.Category;
+                _userLatLng = new LatLng(myLocation.Latitude, myLocation.Longitude);
+            }
+
+        }
+
+        private void MenuButton_Click(object sender, EventArgs e)
+        {
+            var menuIntent = new Intent(this, typeof(MainActivity));
+            StartActivity(menuIntent);
+        }
+
+        private void UserLocationButton_Click(object sender, EventArgs e)
+        {
+            LatLng userLatLng = new LatLng(_userLat, _userLng);
+            AddUserMarker(userLatLng);
+            UserCameraUpdate(userLatLng);
         }
 
         public void OnMapReady(GoogleMap map)
@@ -127,8 +174,13 @@ namespace Ketogo
             _googleMap = map;
 
             _googleMap.UiSettings.ZoomControlsEnabled = true;
+            _googleMap.SetMapStyle(MapStyleOptions.LoadRawResourceStyle(this, Resource.Raw.mymapstyle));
 
-            AddMarkers(_selectedPlaceCategory);
+            if (_selectedPlaceCategory != null)
+            {
+                AddMarkers(_selectedPlaceCategory);
+            }
+            AddUserMarker(_userLatLng);
             UpdateCamera(_selectedPlaceLatLng);
 
             _googleMap.InfoWindowClick += GoogleMap_InfoWindowClick;
@@ -147,6 +199,9 @@ namespace Ketogo
         private void AddMarkers(string category)
         {
             _googleMap.Clear();
+            LatLng userLatLng = new LatLng(_userLat, _userLng);
+            AddUserMarker(userLatLng);
+
             _selectedPlaces = _placeDatabase.GetAllPlacesByCategory(category);
 
             foreach (Place place in _selectedPlaces)
@@ -160,6 +215,17 @@ namespace Ketogo
                     .SetIcon(BitmapDescriptorFactory.FromResource(GetIconByCategory(place.Category)));
                 _googleMap.AddMarker(placeMarker);
             }
+        }
+
+        private void AddUserMarker(LatLng userLatLng)
+        {
+            if (_userMarker != null)
+            {
+                _userMarker.Remove();
+            }
+            _userMarker = _googleMap.AddMarker(new MarkerOptions().SetPosition(userLatLng)
+                .SetTitle("Moja poloha")
+                .SetIcon(BitmapDescriptorFactory.FromResource((int) typeof(Resource.Drawable).GetField("icon_user").GetValue(null))));
         }
 
         private int GetIconByCategory(string category)
@@ -242,6 +308,47 @@ namespace Ketogo
         {
             var cameraUpdate = CameraUpdateFactory.NewLatLngZoom(latLng, 16);
             _googleMap.MoveCamera(cameraUpdate);
+        }
+
+        private void UserCameraUpdate(LatLng latLng)
+        {
+            var cameraUpdate = CameraUpdateFactory.NewLatLngZoom(latLng, 16);
+            _googleMap.MoveCamera(cameraUpdate);
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+            _locationManager.RequestLocationUpdates(_provider, 400, 1, this);
+        }
+
+        protected override void OnPause()
+        {
+            base.OnPause();
+            _locationManager.RemoveUpdates(this);
+        }
+
+        public void OnLocationChanged(Location location)
+        {
+            _userLat = location.Latitude;
+            _userLng = location.Longitude;
+            LatLng userLatLng = new LatLng(_userLat, _userLng);
+            AddUserMarker(userLatLng);
+        }
+
+        public void OnProviderDisabled(string provider)
+        {
+            //throw new NotImplementedException();
+        }
+
+        public void OnProviderEnabled(string provider)
+        {
+            //throw new NotImplementedException();
+        }
+
+        public void OnStatusChanged(string provider, Availability status, Bundle extras)
+        {
+            //throw new NotImplementedException();
         }
     }
 }
