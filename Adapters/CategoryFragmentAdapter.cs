@@ -35,7 +35,26 @@ namespace Ketogo.Adapters
 
         public override Java.Lang.ICharSequence GetPageTitleFormatted(int position)
         {
-            return new Java.Lang.String(_categories[position]);
+            if (_categories[position] == "Restaurant")
+            {
+                return new Java.Lang.String("Reštaurácie");
+            }
+            else if (_categories[position] == "Cafe")
+            {
+                return new Java.Lang.String("Kaviarne");
+            }
+            else if (_categories[position] == "Store")
+            {
+                return new Java.Lang.String("Obchody");
+            }
+            else if (_categories[position] == "School")
+            {
+                return new Java.Lang.String("Školy");
+            }
+            else
+            {
+                return new Java.Lang.String("Doktori");
+            }
         }
     }
 }

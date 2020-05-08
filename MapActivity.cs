@@ -14,6 +14,7 @@ using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
 using Ketogo.Database;
+using Ketogo.Helpers;
 using Ketogo.Model;
 
 namespace Ketogo
@@ -132,7 +133,7 @@ namespace Ketogo
 
             _locationManager = (LocationManager)GetSystemService(Context.LocationService);
             _provider = _locationManager.GetBestProvider(new Criteria(), false);
-            Location myLocation = _locationManager.GetLastKnownLocation(_provider);
+            Location myLocation = GetLastKnownLocation();
             if (myLocation == null)
             {
                 System.Diagnostics.Debug.WriteLine("No Location");
@@ -154,6 +155,27 @@ namespace Ketogo
                 _userLatLng = new LatLng(myLocation.Latitude, myLocation.Longitude);
             }
 
+        }
+
+        private Location GetLastKnownLocation()
+        {
+            _locationManager = (LocationManager)GetSystemService(Context.LocationService);
+            IList<string> providers = _locationManager.GetProviders(true);
+            Location bestLocation = null;
+            foreach (string provider in providers)
+            {
+                Location l = _locationManager.GetLastKnownLocation(provider);
+                if (l == null)
+                {
+                    continue;
+                }
+                if (bestLocation == null || l.Accuracy < bestLocation.Accuracy)
+                {
+                    // Found best last known location: %s", l);
+                    bestLocation = l;
+                }
+            }
+            return bestLocation;
         }
 
         private void MenuButton_Click(object sender, EventArgs e)
@@ -207,11 +229,12 @@ namespace Ketogo
             foreach (Place place in _selectedPlaces)
             {
                 LatLng placeLatLng = new LatLng(place.Lat, place.Lng);
+                double distance = Math.Round(DistanceHelper.CalculateDistance(GetLastKnownLocation().Latitude, GetLastKnownLocation().Longitude, place.Lat, place.Lng), 2);
 
                 var placeMarker = new MarkerOptions();
                 placeMarker.SetPosition(placeLatLng)
                     .SetTitle(place.Name)
-                    .SetSnippet(place.Rating.ToString())
+                    .SetSnippet("rating: " + place.Rating.ToString() + ", vzdialené: " + distance.ToString() + "km")
                     .SetIcon(BitmapDescriptorFactory.FromResource(GetIconByCategory(place.Category)));
                 _googleMap.AddMarker(placeMarker);
             }

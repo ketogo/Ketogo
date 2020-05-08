@@ -41,6 +41,11 @@ namespace Ketogo.Database
             return allPlaces.FirstOrDefault(p => p.Name == name);
         }
 
+        public List<Place> GetAllRestaurantsAndCafes()
+        {
+            return dbConnection.Query<Place>("Select * from [places] where category = 'Restaurant' or category = 'Cafe'");
+        }
+
         public List<Place> GetAllPlacesByCategory(string category)
         {
             return dbConnection.Query<Place>("Select * from [places] where category = '" + category + "'");

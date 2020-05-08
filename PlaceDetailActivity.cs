@@ -14,6 +14,7 @@ using Android.Widget;
 using Ketogo.Database;
 using Ketogo.Helpers;
 using Ketogo.Model;
+using Xamarin.Essentials;
 
 namespace Ketogo
 {
@@ -31,6 +32,7 @@ namespace Ketogo
         private Button _navButton;
         private Button _mapButton;
         private ImageButton _favButton;
+        private ImageButton _menuButton;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -52,11 +54,24 @@ namespace Ketogo
             _mapButton.Click += MapButton_Click;
             _favButton.Click += FavButton_Click;
             _navButton.Click += NavButton_Click;
+            _menuButton.Click += MenuButton_Click;
         }
 
-        private void NavButton_Click(object sender, EventArgs e)
+        private void MenuButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var menuIntent = new Intent(this, typeof(MainActivity));
+            StartActivity(menuIntent);
+        }
+
+        private async void NavButton_Click(object sender, EventArgs e)
+        {
+            var supportsUri = await Launcher.CanOpenAsync("comgooglemaps://");
+
+            if (supportsUri)
+                await Launcher.OpenAsync($"comgooglemaps://?q={_selectedPlace.Lat},{_selectedPlace.Lng}({_selectedPlace.Name})");
+
+            else
+                await Map.OpenAsync(_selectedPlace.Lat, _selectedPlace.Lng, new MapLaunchOptions { Name = _selectedPlace.Name });
         }
 
         private void FavButton_Click(object sender, EventArgs e)
@@ -124,6 +139,7 @@ namespace Ketogo
             _mapButton = FindViewById<Button>(Resource.Id.mapButton);
             _navButton = FindViewById<Button>(Resource.Id.navButton);
             _favButton = FindViewById<ImageButton>(Resource.Id.favButton);
+            _menuButton = FindViewById<ImageButton>(Resource.Id.menuButton);
         }
     }
 }

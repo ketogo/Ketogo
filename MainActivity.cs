@@ -6,6 +6,7 @@ using Android.OS;
 using Android.Support.V7.App;
 using Android.Runtime;
 using Android.Widget;
+using Xamarin.Essentials;
 
 namespace Ketogo
 {
@@ -15,13 +16,13 @@ namespace Ketogo
         private Button _mapButton;
         private Button _favoriteButton;
         private Button _topButton;
-        private Button _optionsButton;
+        private Button _nearButton;
         private Button _aboutButton;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            // Set our view from the "main" layout resource
+            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
 
             FindViews();
@@ -33,21 +34,20 @@ namespace Ketogo
             _mapButton.Click += MapButton_Click;
             _favoriteButton.Click += FavoriteButton_Click;
             _topButton.Click += TopButton_Click;
-            _optionsButton.Click += OptionsButton_Click;
+            _nearButton.Click += NearButton_Click;
             _aboutButton.Click += AboutButton_Click;
         }
 
         private void AboutButton_Click(object sender, EventArgs e)
         {
-            var selectedPlaceId = 10;
-            var aboutIntent = new Intent(this, typeof(PlaceDetailActivity));
-            aboutIntent.PutExtra("selectedPlaceId", selectedPlaceId);
+            var aboutIntent = new Intent(this, typeof(AboutActivity));
             StartActivity(aboutIntent);
         }
 
-        private void OptionsButton_Click(object sender, EventArgs e)
+        private void NearButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var NearIntent = new Intent(this, typeof(NearActivity));
+            StartActivity(NearIntent);
         }
 
         private void TopButton_Click(object sender, EventArgs e)
@@ -67,7 +67,7 @@ namespace Ketogo
             _mapButton = FindViewById<Button>(Resource.Id.MapButton);
             _favoriteButton = FindViewById<Button>(Resource.Id.FavoriteButton);
             _topButton = FindViewById<Button>(Resource.Id.TopButton);
-            _optionsButton = FindViewById<Button>(Resource.Id.OptionsButton);
+            _nearButton = FindViewById<Button>(Resource.Id.OptionsButton);
             _aboutButton = FindViewById<Button>(Resource.Id.AboutButton);
         }
 
@@ -76,6 +76,13 @@ namespace Ketogo
             var MapIntent = new Intent(this, typeof(MapActivity));
             MapIntent.PutExtra("selectedPlaceId", 0);
             StartActivity(MapIntent);
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults)
+        {
+            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 }

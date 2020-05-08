@@ -29,7 +29,29 @@ namespace Ketogo.Fragments
             View view = inflater.Inflate(Resource.Layout.place_menu_fragment, container, false);
 
             var categoryTextView = view.FindViewById<TextView>(Resource.Id.categoryTextView);
-            categoryTextView.Text = _category;
+            var menuButton = view.FindViewById<ImageButton>(Resource.Id.menuButton);
+            menuButton.Click += MenuButton_Click;
+
+            if (_category == "Restaurant")
+            {
+                categoryTextView.Text = "Najlepšie hodnotené reštaurácie";
+            }
+            else if (_category == "Cafe")
+            {
+                categoryTextView.Text = "Najlepšie hodnotené kaviarne";
+            }
+            else if (_category == "Store")
+            {
+                categoryTextView.Text = "Najlepšie hodnotené obchody";
+            }
+            else if (_category == "School")
+            {
+                categoryTextView.Text = "Najlepšie hodnotené školy";
+            }
+            else if (_category == "Doctor")
+            {
+                categoryTextView.Text = "Najlepšie hodnotení doktori";
+            }
 
             var placeRecyclerView = view.FindViewById<RecyclerView>(Resource.Id.placeMenuRecyclerView);
             var placeLayoutManager = new LinearLayoutManager(this.Context);
@@ -40,6 +62,12 @@ namespace Ketogo.Fragments
             placeRecyclerView.SetAdapter(placeAdapter);
 
             return view;
+        }
+
+        private void MenuButton_Click(object sender, EventArgs e)
+        {
+            var menuIntent = new Intent(Application.Context, typeof(MainActivity));
+            StartActivity(menuIntent);
         }
 
         private void PlaceAdapter_ItemClick(object sender, int e)

@@ -7,6 +7,8 @@
 
 	<LinearLayout
 		android:orientation="horizontal"
+		android:minWidth="25px"
+		android:minHeight="25px"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:id="@+id/linearLayout6">
@@ -15,7 +17,7 @@
 			android:layout_width="24dp"
 			android:layout_height="24dp"
 			android:layout_marginTop="10dp"
-			android:layout_marginLeft="15dp"
+			android:layout_marginLeft="5dp"
 			android:background="@android:color/transparent"
 			android:id="@+id/menuButton" />
 		<TextView
@@ -29,14 +31,12 @@
 	</LinearLayout>
 
 	<TextView
-		android:text="Category"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_gravity="center"
+		android:text="Miesta blízko mňa"
 		android:textSize="18dp"
 		android:padding="10dp"
-		android:layout_margin="10dp"
-		android:id="@+id/categoryTextView" />
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/textView" />
 
 	<android.support.v7.widget.RecyclerView
 		android:layout_margin="5dp"
